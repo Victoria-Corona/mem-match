@@ -107,3 +107,7 @@ background-image: url(assets/img/lfz-card.jpg);
 .react-logo {
   background-image: url(assets/img/react-logo.png);
 }
+
+.hidden {
+  display: none;
+}
