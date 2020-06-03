@@ -1,4 +1,5 @@
 var gameCards = document.getElementById("gameCards");
+var modal = document.querySelector(".modal-overlay")
 var firstCardClicked;
 var secondCardClicked;
 var firstCardClasses;
@@ -31,6 +32,7 @@ function handleClick(event) {
 
       if(matches === maxMatches){
         console.log("You've won!");
+        modal.classList.remove("hidden");
       }
 
     } else {
