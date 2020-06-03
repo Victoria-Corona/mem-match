@@ -29,7 +29,10 @@ function handleClick(event) {
       secondCardClicked = null;
       matches++;
 
-    console.log(matches);
+      if(matches === maxMatches){
+        console.log("You've won!");
+      }
+
     } else {
       setTimeout(function(){
         firstCardClicked.classList.remove("hidden");
