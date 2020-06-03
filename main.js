@@ -36,6 +36,7 @@ function handleClick(event) {
 
       matches++;
       attempts++;
+      displayStats();
       console.log(attempts)
       if(matches === maxMatches){
         console.log("You've won!");
@@ -49,7 +50,7 @@ function handleClick(event) {
         firstCardClicked = null;
         secondCardClicked = null;
         attempts++;
-        console.log(attempts);
+        displayStats();
         gameCards.addEventListener("click", handleClick);
       }, 2000);
     }
