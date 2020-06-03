@@ -21,13 +21,18 @@ function handleClick(event) {
     secondCardClicked = event.target;
     secondCardClasses = secondCardClicked.previousElementSibling.className;
     console.log("second card clicked", secondCardClasses);
+    gameCards.removeEventListener("click", handleClick);
 
     if(firstCardClasses === secondCardClasses){
       console.log("The images match");
     } else {
       console.log("The images do not match");
-      firstCardClicked.classList.remove("hidden");
+      setTimeout(function(){
+        firstCardClicked.classList.remove("hidden");
       secondCardClicked.classList.remove("hidden");
+      }, 1500);
+
+
     }
   }
 }
