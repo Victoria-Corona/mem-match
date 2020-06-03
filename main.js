@@ -11,9 +11,10 @@ var gamesPlayed = 0;
 var gameRound = document.getElementById("game-round");
 var attemptsMade = document.getElementById("attempts-made");
 var playerAccuracy = document.getElementById("player-accuracy");
+var resetGameButton = document.getElementById("reset-game");
 
 gameCards.addEventListener("click", handleClick);
-
+resetGameButton.addEventListener("click", resetGame);
 
 function handleClick(event) {
   if (event.target.className.indexOf("card-back") === -1) {
@@ -64,7 +65,26 @@ function displayStats(){
 }
 
 function calculateAccuracy(attempts, matches){
+  if(!attempts){
+    return "0%";
+  }
+
   return (Math.trunc((matches/attempts) * 100)) + "%";
 }
 
-//math.trunc()
+function resetGame(){
+  attempts = 0;
+  matches = 0;
+  gamesPlayed++;
+  displayStats();
+  resetCards();
+  modal.classList.add("hidden")
+}
+
+function resetCards(){
+  var hiddenCards = document.querySelectorAll(".card-back");
+
+  for (var count = 0; count < hiddenCards.length; count++){
+    hiddenCards[count].classList.remove("hidden");
+  }
+}
