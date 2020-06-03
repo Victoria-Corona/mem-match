@@ -3,6 +3,8 @@ var firstCardClicked;
 var secondCardClicked;
 var firstCardClasses;
 var secondCardClasses;
+var maxMatches = 9;
+var matches = 0;
 
 gameCards.addEventListener("click", handleClick);
 
