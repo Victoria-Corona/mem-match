@@ -30,8 +30,10 @@ function handleClick(event) {
       gameCards.addEventListener("click", handleClick);
       firstCardClicked = null;
       secondCardClicked = null;
-      matches++;
 
+      matches++;
+      attempts++;
+      console.log(attempts)
       if(matches === maxMatches){
         console.log("You've won!");
         modal.classList.remove("hidden");
@@ -43,6 +45,8 @@ function handleClick(event) {
         secondCardClicked.classList.remove("hidden");
         firstCardClicked = null;
         secondCardClicked = null;
+        attempts++;
+        console.log(attempts);
         gameCards.addEventListener("click", handleClick);
       }, 2000);
     }
