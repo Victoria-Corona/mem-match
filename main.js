@@ -26,6 +26,8 @@ function handleClick(event) {
       console.log("The images match");
     } else {
       console.log("The images do not match");
+      firstCardClicked.classList.remove("hidden");
+      secondCardClicked.classList.remove("hidden");
     }
   }
 }
