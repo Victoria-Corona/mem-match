@@ -18,21 +18,19 @@ function handleClick(event) {
   if(!firstCardClicked){
     firstCardClicked = event.target;
     firstCardClasses = firstCardClicked.previousElementSibling.className;
-    console.log("first card clicked", firstCardClasses);
   } else {
     secondCardClicked = event.target;
     secondCardClasses = secondCardClicked.previousElementSibling.className;
-    console.log("second card clicked", secondCardClasses);
     gameCards.removeEventListener("click", handleClick);
 
     if(firstCardClasses === secondCardClasses){
-      console.log("The images match");
       gameCards.addEventListener("click", handleClick);
       firstCardClicked = null;
       secondCardClicked = null;
+      matches++;
 
+    console.log(matches);
     } else {
-      console.log("The images do not match");
       setTimeout(function(){
         firstCardClicked.classList.remove("hidden");
         secondCardClicked.classList.remove("hidden");
@@ -40,8 +38,6 @@ function handleClick(event) {
         secondCardClicked = null;
         gameCards.addEventListener("click", handleClick);
       }, 2000);
-
-
     }
   }
 }
