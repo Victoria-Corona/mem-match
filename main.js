@@ -6,6 +6,8 @@ var firstCardClasses;
 var secondCardClasses;
 var maxMatches = 9;
 var matches = 0;
+var attempts = 0;
+var gamesPlayed = 0;
 
 gameCards.addEventListener("click", handleClick);
 
