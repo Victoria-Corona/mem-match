@@ -68,13 +68,16 @@ function calculateAccuracy(attempts, matches){
 }
 
 function resetGame(){
-
   attempts = 0;
   matches = 0;
   gamesPlayed++;
   displayStats();
 }
 
-//after a resetgame called, gamesplayed++
-//matches = null/0
-//attempts = null/0
+function resetCards(){
+  var hiddenCards = document.querySelectorAll(".card-back");
+
+  for (var count = 0; count < hiddenCards.length; count++){
+    hiddenCards[count].classList.remove("hidden");
+  }
+}
