@@ -65,6 +65,10 @@ function displayStats(){
 }
 
 function calculateAccuracy(attempts, matches){
+  if(!attempts){
+    return "0%";
+  }
+
   return (Math.trunc((matches/attempts) * 100)) + "%";
 }
 
