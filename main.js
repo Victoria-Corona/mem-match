@@ -25,12 +25,19 @@ function handleClick(event) {
 
     if(firstCardClasses === secondCardClasses){
       console.log("The images match");
+      gameCards.addEventListener("click", handleClick);
+      firstCardClicked = null;
+      secondCardClicked = null;
+
     } else {
       console.log("The images do not match");
       setTimeout(function(){
         firstCardClicked.classList.remove("hidden");
-      secondCardClicked.classList.remove("hidden");
-      }, 1500);
+        secondCardClicked.classList.remove("hidden");
+        firstCardClicked = null;
+        secondCardClicked = null;
+        gameCards.addEventListener("click", handleClick);
+      }, 2000);
 
 
     }
