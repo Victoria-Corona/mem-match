@@ -8,6 +8,9 @@ var maxMatches = 9;
 var matches = 0;
 var attempts = 0;
 var gamesPlayed = 0;
+var gameRound = document.getElementById("game-round");
+var attemptsMade = document.getElementById("attempts-made");
+var playerAccuracy = document.getElementById("player-accuracy");
 
 gameCards.addEventListener("click", handleClick);
 
@@ -51,4 +54,10 @@ function handleClick(event) {
       }, 2000);
     }
   }
+}
+
+function displayStats(){
+  gameRound.textContent = gamesPlayed;
+  attemptsMade.textContent = attempts;
+  playerAccuracy.textContent = matches/attempts;
 }
