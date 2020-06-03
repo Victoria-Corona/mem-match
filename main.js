@@ -21,5 +21,11 @@ function handleClick(event) {
     secondCardClicked = event.target;
     secondCardClasses = secondCardClicked.previousElementSibling.className;
     console.log("second card clicked", secondCardClasses);
+
+    if(firstCardClasses === secondCardClasses){
+      console.log("The images match");
+    } else {
+      console.log("The images do not match");
+    }
   }
 }
