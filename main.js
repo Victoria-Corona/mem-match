@@ -67,4 +67,14 @@ function calculateAccuracy(attempts, matches){
   return (Math.trunc((matches/attempts) * 100)) + "%";
 }
 
-//math.trunc()
+function resetGame(){
+
+  attempts = 0;
+  matches = 0;
+  gamesPlayed++;
+  displayStats();
+}
+
+//after a resetgame called, gamesplayed++
+//matches = null/0
+//attempts = null/0
