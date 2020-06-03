@@ -138,12 +138,25 @@ background-image: url(assets/img/lfz-card.jpg);
 }
 
 .modal-content {
-  background-color: rosybrown;
-  width: 50%;
+  background-color: rgb(105, 123, 126);
+  width: 30%;
   color: white;
   text-align: center;
+  position: relative;
+  padding: 1rem;
 }
 
+.modal-content > p {
+  margin: 0;
+}
+
+button {
+  border: none;
+  border-radius: 500px;
+  background-color: rgb(165, 220, 235);
+  padding: 5px 8px;
+  margin: auto;
+}
 
 .hidden {
   display: none;

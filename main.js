@@ -11,9 +11,10 @@ var gamesPlayed = 0;
 var gameRound = document.getElementById("game-round");
 var attemptsMade = document.getElementById("attempts-made");
 var playerAccuracy = document.getElementById("player-accuracy");
+var resetGameButton = document.getElementById("reset-game");
 
 gameCards.addEventListener("click", handleClick);
-
+resetGameButton.addEventListener("click", resetGame);
 
 function handleClick(event) {
   if (event.target.className.indexOf("card-back") === -1) {
@@ -72,6 +73,8 @@ function resetGame(){
   matches = 0;
   gamesPlayed++;
   displayStats();
+  resetCards();
+  modal.classList.add("hidden")
 }
 
 function resetCards(){
