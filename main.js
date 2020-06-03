@@ -13,8 +13,31 @@ var attemptsMade = document.getElementById("attempts-made");
 var playerAccuracy = document.getElementById("player-accuracy");
 var resetGameButton = document.getElementById("reset-game");
 
+var cards = [
+  "css-logo",
+  "docker-logo",
+  "gitHub-logo",
+  "html-logo",
+  "js-logo",
+  "mysql-logo",
+  "node-logo",
+  "php-logo",
+  "react-logo",
+  "css-logo",
+  "docker-logo",
+  "gitHub-logo",
+  "html-logo",
+  "js-logo",
+  "mysql-logo",
+  "node-logo",
+  "php-logo",
+  "react-logo"
+];
+
 gameCards.addEventListener("click", handleClick);
 resetGameButton.addEventListener("click", resetGame);
+
+createCards();
 
 function handleClick(event) {
   if (event.target.className.indexOf("card-back") === -1) {
@@ -87,4 +110,42 @@ function resetCards(){
   for (var count = 0; count < hiddenCards.length; count++){
     hiddenCards[count].classList.remove("hidden");
   }
+}
+
+function createCards(){
+  for(var start = 0; start < cards.length; start++){
+    var parentDiv = document.createElement("div");
+    parentDiv.className = "col-2 card";
+
+    var childFront = document.createElement("div");
+    childFront.className = "card-front";
+
+    var childBack = document.createElement("div");
+    childBack.className = "card-back";
+
+    parentDiv.appendChild(childFront);
+    parentDiv.appendChild(childBack);
+    gameCards.appendChild(parentDiv);
+  }
+
+
+
+
+}
+
+
+
+
+//function needs to be called onload
+//or not! I like my way better, it's more fun
+//function needs to create a div element
+//that element will be given a calssname of col-2 and card
+//that div element is also a parent to two children
+//two more divs will have to be made, both assigned either a
+//card-front or card-back, but both appended to the parent
+//function needs to create 18 of them
+
+
+function shuffleCards(){
+
 }
