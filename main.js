@@ -52,7 +52,7 @@ function handleClick(event) {
         attempts++;
         displayStats();
         gameCards.addEventListener("click", handleClick);
-      }, 2000);
+      }, 1000);
     }
   }
 }
@@ -60,5 +60,11 @@ function handleClick(event) {
 function displayStats(){
   gameRound.textContent = gamesPlayed;
   attemptsMade.textContent = attempts;
-  playerAccuracy.textContent = matches/attempts;
+  playerAccuracy.textContent = calculateAccuracy(attempts, matches);
 }
+
+function calculateAccuracy(attempts, matches){
+  return (Math.trunc((matches/attempts) * 100)) + "%";
+}
+
+//math.trunc()
