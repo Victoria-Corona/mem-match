@@ -4,20 +4,30 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  display: flex;
+  align-items: center;
 }
 
 /* header information  */
-.header-row {
+header {
   display: flex;
+}
+
+.header-row {
   justify-content: center;
+  align-items: center;
+  font-size: 30px;
 }
 
 /* end of head information */
 
 /* aside information */
 
+.row-1 {
+  height: 20%;
+}
 .row-2 {
-  height: 85%;
+  height: 70%;
 }
 
 aside, main {
@@ -31,9 +41,7 @@ aside {
 
 aside > div {
   background-color: rgb(165, 220, 235);
-  width: 70%;
-  height: 3em;
-  text-align: center;
+  width: 60%;
   margin: auto;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -41,6 +49,8 @@ aside > div {
 
 .stats-container {
   flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 /* end of aside information */
 
@@ -51,16 +61,16 @@ main {
 
 .card {
   /* background-image: url(assets/img/lfz-card.jpg); */
-  height: 20%;
+  height: 25%;
   background-size: cover;
   background-position: center;
   justify-content: center;
-  /* margin: 3px; */
   position: relative;
 }
 
 .card-container {
   margin: auto;
+  margin-top: 2%;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
