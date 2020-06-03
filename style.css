@@ -124,6 +124,27 @@ background-image: url(assets/img/lfz-card.jpg);
   background-image: url(assets/img/react-logo.png);
 }
 
+/* end of card information */
+
+.modal-overlay {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+
+.modal-content {
+  background-color: rosybrown;
+  width: 50%;
+  color: white;
+  text-align: center;
+}
+
+
 .hidden {
   display: none;
 }
