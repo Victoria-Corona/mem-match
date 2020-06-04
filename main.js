@@ -66,9 +66,9 @@ function handleClick(event) {
       matches++;
       attempts++;
       displayStats();
-      console.log(attempts)
+      // console.log(attempts)
       if(matches === maxMatches){
-        console.log("You've won!");
+        // console.log("You've won!");
         modal.classList.remove("hidden");
         clearInterval(interval);
       }
