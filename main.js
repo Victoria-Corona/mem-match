@@ -12,6 +12,8 @@ var gameRound = document.getElementById("game-round");
 var attemptsMade = document.getElementById("attempts-made");
 var playerAccuracy = document.getElementById("player-accuracy");
 var resetGameButton = document.getElementById("reset-game");
+var countDownTimer = document.getElementById("count-down");
+
 
 var cards = [
   "css-logo",
@@ -39,6 +41,8 @@ resetGameButton.addEventListener("click", resetGame);
 
 shuffleCards();
 createCards();
+gameOver();
+
 function handleClick(event) {
   if (event.target.className.indexOf("card-back") === -1) {
     return;
@@ -150,4 +154,24 @@ function destroyChildren(){
   while(gameCards.firstChild){
     gameCards.removeChild(gameCards.firstChild);
   }
+}
+
+function gameOver(){
+
+  var interval = setInterval(countDown, 1000);
+  var counter = 60;
+
+  function countDown(){
+    if(counter === 1) {
+      countDownTimer.textContent = "You lose!";
+      // gameCards.removeEventListener("click", handleClick);
+
+    } else {
+      counter--;
+      countDownTimer.textContent = counter;
+    }
+  }
+  //a setTimeout will run, give the user 10 seconds
+  //to pick a card
+  //if a card is not selected, game over
 }
