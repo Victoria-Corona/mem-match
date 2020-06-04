@@ -101,7 +101,7 @@ function resetGame(){
   gamesPlayed++;
   displayStats();
   resetCards();
-  modal.classList.add("hidden")
+  modal.classList.add("hidden");
 }
 
 function resetCards(){
@@ -113,12 +113,14 @@ function resetCards(){
 }
 
 function createCards(){
+  shuffleCards();
   for(var start = 0; start < cards.length; start++){
     var parentDiv = document.createElement("div");
     parentDiv.className = "col-2 card";
 
     var childFront = document.createElement("div");
-    childFront.className = "card-front";
+    childFront.className = "card-front ";
+    childFront.className += cards[start];
 
     var childBack = document.createElement("div");
     childBack.className = "card-back";
@@ -127,25 +129,17 @@ function createCards(){
     parentDiv.appendChild(childBack);
     gameCards.appendChild(parentDiv);
   }
-
-
-
-
 }
 
-
-
-
-//function needs to be called onload
-//or not! I like my way better, it's more fun
-//function needs to create a div element
-//that element will be given a calssname of col-2 and card
-//that div element is also a parent to two children
-//two more divs will have to be made, both assigned either a
-//card-front or card-back, but both appended to the parent
-//function needs to create 18 of them
-
-
 function shuffleCards(){
+  var index = cards.length
+  var newPosition;
+  var tempPosition;
 
+  for(var index = cards.length - 1; index > 0; index--){
+    newPosition = Math.floor(Math.random() * (index + 1));
+    tempPosition = cards[index];
+    cards[index] = cards[newPosition];
+    cards[newPosition] = tempPosition;
+  }
 }
