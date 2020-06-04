@@ -1,5 +1,6 @@
 var gameCards = document.getElementById("gameCards");
 var modal = document.querySelector(".modal-overlay")
+var modalLose = document.querySelector(".modal-overlay-lose");
 var firstCardClicked;
 var secondCardClicked;
 var firstCardClasses;
@@ -13,7 +14,7 @@ var attemptsMade = document.getElementById("attempts-made");
 var playerAccuracy = document.getElementById("player-accuracy");
 var resetGameButton = document.getElementById("reset-game");
 var countDownTimer = document.getElementById("count-down");
-
+var resetGameLoseButton = document.getElementById("reset-game-lose")
 
 var cards = [
   "css-logo",
@@ -38,6 +39,7 @@ var cards = [
 
 gameCards.addEventListener("click", handleClick);
 resetGameButton.addEventListener("click", resetGame);
+resetGameLoseButton.addEventListener("click", resetGame);
 
 shuffleCards();
 createCards();
@@ -80,7 +82,7 @@ function handleClick(event) {
         attempts++;
         displayStats();
         gameCards.addEventListener("click", handleClick);
-      }, 1000);
+      }, 500);
     }
   }
 }
@@ -104,10 +106,10 @@ function resetGame(){
   matches = 0;
   gamesPlayed++;
   modal.classList.add("hidden");
-
-
-  counter = 10;
+  modalLose.classList.add("hidden");
+  counter = 61;
   interval = setInterval(countDown, 1000);
+  gameCards.addEventListener("click", handleClick);
   destroyChildren();
   createCards();
   resetCards();
@@ -163,25 +165,16 @@ function destroyChildren(){
 
 
   var interval = setInterval(countDown, 1000);
-  var counter = 10;
+  var counter = 60;
 
   function countDown(){
     if(counter === 0) {
       countDownTimer.textContent = "You lose!";
       clearInterval(interval);
       gameCards.removeEventListener("click", handleClick);
-      modal.classList.remove("hidden");
+      modalLose.classList.remove("hidden");
     } else {
       counter--;
       countDownTimer.textContent = counter;
     }
-
-  //a setTimeout will run, give the user 60 seconds
-  //to finish the game
-  //if the game is not won in the given time, timer
-  //will throw up a module informing you lost and if you
-  //want to try again
-
-  //if you finish the game before the timer runs out
-  //timer will stop
 }
