@@ -37,8 +37,8 @@ var cards = [
 gameCards.addEventListener("click", handleClick);
 resetGameButton.addEventListener("click", resetGame);
 
+shuffleCards();
 createCards();
-
 function handleClick(event) {
   if (event.target.className.indexOf("card-back") === -1) {
     return;
@@ -99,9 +99,11 @@ function resetGame(){
   attempts = 0;
   matches = 0;
   gamesPlayed++;
-  displayStats();
-  resetCards();
   modal.classList.add("hidden");
+  destroyChildren();
+  createCards();
+  resetCards();
+  displayStats();
 }
 
 function resetCards(){
@@ -141,5 +143,11 @@ function shuffleCards(){
     tempPosition = cards[index];
     cards[index] = cards[newPosition];
     cards[newPosition] = tempPosition;
+  }
+}
+
+function destroyChildren(){
+  while(gameCards.firstChild){
+    gameCards.removeChild(gameCards.firstChild);
   }
 }
