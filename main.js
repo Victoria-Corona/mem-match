@@ -41,7 +41,6 @@ resetGameButton.addEventListener("click", resetGame);
 
 shuffleCards();
 createCards();
-gameOver();
 
 function handleClick(event) {
   if (event.target.className.indexOf("card-back") === -1) {
@@ -69,6 +68,7 @@ function handleClick(event) {
       if(matches === maxMatches){
         console.log("You've won!");
         modal.classList.remove("hidden");
+        clearInterval(interval);
       }
 
     } else {
@@ -104,10 +104,15 @@ function resetGame(){
   matches = 0;
   gamesPlayed++;
   modal.classList.add("hidden");
+
+
+  counter = 10;
+  interval = setInterval(countDown, 1000);
   destroyChildren();
   createCards();
   resetCards();
   displayStats();
+
 }
 
 function resetCards(){
@@ -156,22 +161,27 @@ function destroyChildren(){
   }
 }
 
-function gameOver(){
 
   var interval = setInterval(countDown, 1000);
-  var counter = 60;
+  var counter = 10;
 
   function countDown(){
-    if(counter === 1) {
+    if(counter === 0) {
       countDownTimer.textContent = "You lose!";
-      // gameCards.removeEventListener("click", handleClick);
-
+      clearInterval(interval);
+      gameCards.removeEventListener("click", handleClick);
+      modal.classList.remove("hidden");
     } else {
       counter--;
       countDownTimer.textContent = counter;
     }
-  }
-  //a setTimeout will run, give the user 10 seconds
-  //to pick a card
-  //if a card is not selected, game over
+
+  //a setTimeout will run, give the user 60 seconds
+  //to finish the game
+  //if the game is not won in the given time, timer
+  //will throw up a module informing you lost and if you
+  //want to try again
+
+  //if you finish the game before the timer runs out
+  //timer will stop
 }
