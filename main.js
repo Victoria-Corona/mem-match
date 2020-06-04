@@ -1,5 +1,6 @@
 var gameCards = document.getElementById("gameCards");
 var modal = document.querySelector(".modal-overlay")
+var modalLose = document.querySelector(".modal-overlay-lose");
 var firstCardClicked;
 var secondCardClicked;
 var firstCardClasses;
@@ -12,6 +13,8 @@ var gameRound = document.getElementById("game-round");
 var attemptsMade = document.getElementById("attempts-made");
 var playerAccuracy = document.getElementById("player-accuracy");
 var resetGameButton = document.getElementById("reset-game");
+var countDownTimer = document.getElementById("count-down");
+var resetGameLoseButton = document.getElementById("reset-game-lose")
 
 var cards = [
   "css-logo",
@@ -36,9 +39,11 @@ var cards = [
 
 gameCards.addEventListener("click", handleClick);
 resetGameButton.addEventListener("click", resetGame);
+resetGameLoseButton.addEventListener("click", resetGame);
 
 shuffleCards();
 createCards();
+
 function handleClick(event) {
   if (event.target.className.indexOf("card-back") === -1) {
     return;
@@ -65,6 +70,7 @@ function handleClick(event) {
       if(matches === maxMatches){
         console.log("You've won!");
         modal.classList.remove("hidden");
+        clearInterval(interval);
       }
 
     } else {
@@ -76,7 +82,7 @@ function handleClick(event) {
         attempts++;
         displayStats();
         gameCards.addEventListener("click", handleClick);
-      }, 1000);
+      }, 500);
     }
   }
 }
@@ -100,10 +106,15 @@ function resetGame(){
   matches = 0;
   gamesPlayed++;
   modal.classList.add("hidden");
+  modalLose.classList.add("hidden");
+  counter = 61;
+  interval = setInterval(countDown, 1000);
+  gameCards.addEventListener("click", handleClick);
   destroyChildren();
   createCards();
   resetCards();
   displayStats();
+
 }
 
 function resetCards(){
@@ -150,4 +161,20 @@ function destroyChildren(){
   while(gameCards.firstChild){
     gameCards.removeChild(gameCards.firstChild);
   }
+}
+
+
+  var interval = setInterval(countDown, 1000);
+  var counter = 60;
+
+  function countDown(){
+    if(counter === 0) {
+      countDownTimer.textContent = "You lose!";
+      clearInterval(interval);
+      gameCards.removeEventListener("click", handleClick);
+      modalLose.classList.remove("hidden");
+    } else {
+      counter--;
+      countDownTimer.textContent = counter;
+    }
 }
